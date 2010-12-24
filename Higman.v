@@ -129,7 +129,7 @@ Qed.
 
 Theorem letter_eq_dec : forall a b : letter, {a = b} + {a <> b}.
 intros.
-decide equality a b.
+decide equality.
 Qed.
 
 Theorem prop2 :
