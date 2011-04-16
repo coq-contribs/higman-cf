@@ -70,13 +70,13 @@ Hint Extern 5 (?X1 <> ?X2) => intro; discriminate.
 
 Theorem prop1 : forall ws : list word, bar (nil :: ws).
 auto.
-Qed.
+Defined.
 Hint Resolve prop1.
 
 Theorem lemma1 :
  forall (ws : list word) (xs : word) (x : letter), L xs ws -> L (x :: xs) ws.
 simple induction 1; auto.
-Qed.
+Defined.
 Hint Resolve lemma1.
 
 Theorem lemma2' :
@@ -85,14 +85,14 @@ Theorem lemma2' :
 simple induction 1.
 inversion 1.
 inversion 3; auto.
-Qed.
+Defined.
 Hint Resolve lemma2'.
 
 Theorem lemma2 :
  forall (vs ws : list word) (a : letter), R a vs ws -> good vs -> good ws.
 simple induction 1; auto.
 inversion 3; eauto.
-Qed.
+Defined.
 Hint Resolve lemma2.
 
 Theorem lemma3' :
@@ -105,7 +105,7 @@ Hint Resolve lemma3'.
 Theorem lemma3 :
  forall (ws zs : list word) (a : letter), T a ws zs -> good ws -> good zs.
 simple induction 1; auto; inversion 3; eauto.
-Qed.
+Defined.
 Hint Resolve lemma3.
 
 Theorem lemma4 :
@@ -120,7 +120,7 @@ case a.
 apply (T0 A B w nil); auto.
 apply (T0 B A w nil); auto.
 auto.
-Qed.
+Defined.
 Hint Resolve lemma4.
 
 Theorem letter_neq : forall a b c : letter, a <> b -> c <> a -> c = b.
@@ -130,7 +130,7 @@ Qed.
 Theorem letter_eq_dec : forall a b : letter, {a = b} + {a <> b}.
 intros.
 decide equality.
-Qed.
+Defined.
 
 Theorem prop2 :
  forall (a b : letter) (xs : list word),
@@ -152,7 +152,7 @@ intros.
 elim (letter_eq_dec l a).
 intro; rewrite a0; eauto.
 intro; rewrite (letter_neq a b l neq b2); eauto.
-Qed.
+Defined.
 Hint Resolve prop2.
 
 Theorem prop3 :
@@ -170,13 +170,13 @@ intro.
 rewrite a1; eauto.
 intro.
 apply (prop2 a0 a (l :: zs) b0 H3 ws); eauto.
-Qed.
+Defined.
 Hint Resolve prop3.
 
 Theorem higman : bar nil.
 apply bar2.
 simple induction w; eauto.
-Qed.
+Defined.
 Hint Resolve higman.
 
 Inductive is_prefix (A : Set) : list A -> (nat -> A) -> Prop :=
@@ -194,12 +194,12 @@ simple induction 1.
 intros.
 exists ws0; auto.
 eauto.
-Qed.
+Defined.
 Hint Resolve good_prefix_lemma.
 
 Theorem good_prefix :
  forall f : nat -> word, {vs : list word | is_prefix word vs f /\ good vs}.
 eauto.
-Qed.
+Defined.
 
 Extraction "higman.ml" good_prefix.
