@@ -6,5 +6,5 @@ Higman2.v
 	"@echo '***** test: running Higman proof on one example *****'
 	./higman 101 0110 01010
 	@echo '****************** End of test **********************'"
-  "" test 
+  "higman" test 
 
