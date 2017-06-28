@@ -15,6 +15,7 @@
 
 
 Require Import List.
+Require Extraction.
 
 Inductive letter : Set :=
   | A : letter
